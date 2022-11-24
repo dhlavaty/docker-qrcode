@@ -51,10 +51,19 @@ $ echo -n "mailto:email@example.com?subject=subject&body=email text" | docker ru
 
 ## Docker build
 
-Build image:
+Build multi-arch image:
 
 ```sh
-$ docker build . --tag dhlavaty/qrcode:latest
+$ docker buildx create --name mybuilder
+$ docker buildx use mybuilder
+
+# (Optional) check your builder
+$ docker buildx inspect
+
+$ docker buildx build --platform linux/amd64,linux/arm64 --tag dhlavaty/qrcode . --push
+
+# (Optional) Inspect your image
+$ docker buildx imagetools inspect dhlavaty/qrcode
 ```
 
 Lint dockerfile:

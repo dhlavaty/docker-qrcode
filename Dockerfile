@@ -1,6 +1,6 @@
-FROM alpine:3.12.3
+FROM alpine:edge
 
-RUN apk add libqrencode=4.0.2-r0 --no-cache && \
+RUN apk add libqrencode=4.1.1-r1 --no-cache && \
     rm -rf /var/cache/apk/*
 
 # Use `hadolint` to check this file:
